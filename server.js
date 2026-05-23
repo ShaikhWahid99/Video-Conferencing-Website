@@ -11,7 +11,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["*", "https://video-conferencing-website-ln0t.onrender.com"],
+    origin: ["https://video-conferencing-website-two.vercel.app", "https://video-conferencing-website-ln0t.onrender.com"],
     methods: ["GET", "POST"]
   }
 });

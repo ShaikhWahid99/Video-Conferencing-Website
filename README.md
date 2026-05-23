@@ -1,6 +1,6 @@
-# NEXUS - Professional Video Conferencing & Collaboration Suite
+# Video Conferencing & Collaboration Suite
 
-NEXUS is a high-performance, real-time video conferencing application built with Next.js, WebRTC, and Socket.io. It features a collaborative whiteboard powered by WebRTC Data Channels, enabling seamless communication and visual brainstorming in a single interface.
+This is a real-time video conferencing application built with Next.js, WebRTC, and Socket.io. It features a collaborative whiteboard powered by WebRTC Data Channels, enabling seamless communication and visual brainstorming in a single interface.
 
 ## 🚀 Key Features
 
