@@ -248,22 +248,23 @@ export default function Home() {
   return (
     <main className="app-container">
       <ContactsList users={users} username={username} startCall={startCall} />
-      
+
       <section className="main-content">
         <header className="app-header">
-          <h2 className="title-gradient h-font">NEXUS Workspace</h2>
+          <h2 className="title-gradient h-font">Workspace</h2>
         </header>
 
-        <VideoStreams 
-          localVideoRef={localVideoRef} 
-          remoteVideoRef={remoteVideoRef} 
-          isCallActive={isCallActive} 
-          endCall={endCall} 
-          caller={caller} 
-          socketRef={socketRef} 
+        <VideoStreams
+          localVideoRef={localVideoRef}
+          remoteVideoRef={remoteVideoRef}
+          isCallActive={isCallActive}
+          endCall={endCall}
+          caller={caller}
+          socketRef={socketRef}
+          username={username}
         />
 
-        <Whiteboard 
+        <Whiteboard
           whiteboardRef={whiteboardRef}
           startDrawing={startDrawing}
           draw={draw}
