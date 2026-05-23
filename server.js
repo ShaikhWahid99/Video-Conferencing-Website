@@ -9,7 +9,12 @@ const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 const app = express();
 const server = createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: ["*", "https://video-conferencing-website-ln0t.onrender.com"],
+    methods: ["GET", "POST"]
+  }
+});
 const allusers = {};
 
 nextApp.prepare().then(() => {

@@ -19,36 +19,21 @@ NEXUS is a high-performance, real-time video conferencing application built with
 - **Styling**: Vanilla CSS (Custom Design System)
 - **Language**: JavaScript (ES6+)
 
-## 🏁 Getting Started
+## 🌐 Deployment (Professional Setup)
 
-### Prerequisites
+To avoid the "cold start" screen on free hosting, this project is optimized for a split deployment:
 
-- Node.js 18.x or higher
-- npm or yarn
+### 1. Backend (Signaling Server) - [Render](https://render.com)
+- Create a **Web Service** on Render.
+- Build Command: `npm install && npm run build`
+- Start Command: `npm run start`
+- Note the Render URL (e.g., `https://your-app.onrender.com`).
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ShaikhWahid99/ShaikhWahid99-CodeAlpha_Video-Conferencing-Website.git
-   cd ShaikhWahid99-CodeAlpha_Video-Conferencing-Website
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:8000](http://localhost:8000) in your browser.
-
-## 📡 Architecture Overview
-
-The application uses a custom Next.js server setup. The `server.js` file handles both the Next.js request processing and the Socket.io signaling server. WebRTC is used for the heavy lifting of video/audio and data channel synchronization, ensuring a scalable and low-latency experience.
+### 2. Frontend (UI) - [Vercel](https://vercel.com)
+- Import the repository into Vercel.
+- Add an Environment Variable: 
+  - `NEXT_PUBLIC_BACKEND_URL`: Your Render URL.
+- **Why?** Vercel provides instant loading for the UI, while Render handles the persistent Socket.io connections.
 
 ---
 *Created by Shaikh Wahid for CodeAlpha*

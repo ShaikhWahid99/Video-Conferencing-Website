@@ -13,6 +13,7 @@ const peerConfig = {
 export default function Home() {
   const [username, setUsername] = useState("");
   const [isJoined, setIsJoined] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const [users, setUsers] = useState({});
   const [caller, setCaller] = useState([]);
   const [isCallActive, setIsCallActive] = useState(false);
@@ -129,8 +130,21 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const socket = io();
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "";
+    const socket = io(backendUrl);
+
     socketRef.current = socket;
+
+    socket.on("connect", () => {
+      console.log("Connected to signaling server");
+      setIsConnected(true);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from signaling server");
+      setIsConnected(false);
+    });
+
     socket.on("joined", setUsers);
     socket.on("offer", async ({ from, to, offer }) => {
       const pc = getPeerConnection();
@@ -173,9 +187,8 @@ export default function Home() {
         console.error("Media error:", err);
       }
     })();
-  }, [isJoined]); // Re-run when joined to ensure ref is attached
+  }, [isJoined]); 
 
-  // Fallback to ensure stream is attached if VideoStreams component mounts later
   useEffect(() => {
     if (isJoined && localStreamRef.current && localVideoRef.current && !localVideoRef.current.srcObject) {
       localVideoRef.current.srcObject = localStreamRef.current;
@@ -230,6 +243,21 @@ export default function Home() {
         <div className="login-card glassmorphism">
           <h1 className="h-font title-gradient">NEXUS</h1>
           <p>Professional Video Conferencing & Collaboration</p>
+
+          {!isConnected && (
+            <div className="status-badge connecting">
+              <span className="dot pulse"></span>
+              Connecting to signaling server...
+            </div>
+          )}
+
+          {isConnected && (
+            <div className="status-badge ready">
+              <span className="dot"></span>
+              Server Ready
+            </div>
+          )}
+
           <div className="login-form">
             <input
               value={username}
