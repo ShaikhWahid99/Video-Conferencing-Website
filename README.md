@@ -23,7 +23,7 @@ This is a real-time video conferencing application built with Next.js, WebRTC, a
 
 To avoid the "cold start" screen on free hosting, this project is optimized for a split deployment:
 
-### 1. Frontend (UI) - video-conferencing-website-two.vercel.app
+### 1. Frontend (UI) - https://video-conferencing-website-two.vercel.app
 - Import the repository into Vercel.
 - Add an Environment Variable: 
   - `NEXT_PUBLIC_BACKEND_URL`: https://video-conferencing-website-ln0t.onrender.com.
