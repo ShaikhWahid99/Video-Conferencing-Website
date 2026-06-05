@@ -23,17 +23,16 @@ This is a real-time video conferencing application built with Next.js, WebRTC, a
 
 To avoid the "cold start" screen on free hosting, this project is optimized for a split deployment:
 
-### 1. Backend (Signaling Server) - [Render](https://render.com)
+### 1. Frontend (UI) - [Vercel](https://video-conferencing-website-1n2lq2h35.vercel.app)
+- Import the repository into Vercel.
+- Add an Environment Variable: 
+  - `NEXT_PUBLIC_BACKEND_URL`: https://video-conferencing-website-ln0t.onrender.com.
+- **Why?** Vercel provides instant loading for the UI, while Render handles the persistent Socket.io connections.
+
+### 2. Backend (Signaling Server)
 - Create a **Web Service** on Render.
 - Build Command: `npm install && npm run build`
 - Start Command: `npm run start`
-- Note the Render URL (e.g., `https://your-app.onrender.com`).
-
-### 2. Frontend (UI) - [Vercel](https://vercel.com)
-- Import the repository into Vercel.
-- Add an Environment Variable: 
-  - `NEXT_PUBLIC_BACKEND_URL`: Your Render URL.
-- **Why?** Vercel provides instant loading for the UI, while Render handles the persistent Socket.io connections.
 
 ---
-*Created by Shaikh Wahid for CodeAlpha*
+*Created by Shaikh Wahid*
